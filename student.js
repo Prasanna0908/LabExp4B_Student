@@ -1,7 +1,7 @@
 const student1 = {
-    name: "Ninad Rao",
+    name: "Prasanna Sridharan",
     className: "D15A",
-    rollNo: 24,
+    rollNo: 56,
 };
 
 console.log("Student 1: ", student1);
@@ -14,7 +14,7 @@ class Student {
     }
 }
 
-const student2 = new Student("Neel Gupta", "D15A", 19);
+const student2 = new Student("Prasanna Sridharan", "D15A", 56);
 console.log("Student 2: ", student2);
 
 Student.prototype.college = "VESIT";
