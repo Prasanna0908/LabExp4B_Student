@@ -1,67 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Details of Student</title>
+    <title>Student Info Validator</title>
+
 </head>
+<script>
 
-<style>
-    body {
-        background: grey;
-        color: white;
-        text-shadow: 2px 2px 4px #000000;
+    class Student {
+        constructor(name, roll_no, age, gender) {
+            this.roll_no = roll_no;
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+
+        printStudentDetail() {
+            document.writeln("<b>Name</b>: " + this.name + "<br>", "<b>Age:</b> " + this.age + "<br>" + "<b>Gender:</b>" + this.gender + "<br>" + "<b>Roll no</b>: " + this.roll_no + "<br>")
+        }
     }
-
-    table,
-    th,
-    td {
-        border: 1px solid white;
-        border-collapse: collapse;
+    Student.prototype.college = function () {
+        document.writeln("<b>College:</b> " + "VESIT")
     }
+    name = prompt("Enter Name");
+    roll_no = prompt("Enter Roll_no");
+    age = prompt("Enter Age");
+    gender = prompt("Enter Gender");
 
-    th,
-    td {
-        padding: 10px;
+    try {
+        if (isNaN(roll_no)) throw "Roll no entered is not a number.Enter correct roll number";
+        else if (roll_no == 0) throw "Roll no cannot be zero";
+        if (age < 17 || age > 22) throw "Enter valid age"
+        else {
+            var s1 = new Student(name, roll_no, age, gender);
+            document.writeln("<u>Details Entered in Prompt</u><br>");
+            s1.printStudentDetail();
+            s1.college();
+        }
     }
-
-    .heading {
-        font-size: 3em;
-        letter-spacing: -2px;
-        border-bottom: 2px solid white;
-        text-transform: uppercase;
+    catch (e) {
+        document.writeln(e)
     }
+    document.writeln("<br><br><u>Student2 details</u><br>");
+    /*Object() constructor function*/
+    var s2 = new Student("Prasanna Sridharan", 56);
+    s2.age = 20;
+    s2.gender = "Male";
+    s2.printStudentDetail();
+    s2.college();
 
-    h3 {
-        font-size: 30px;
-    }
-</style>
+    /*object literal syntax*/
+    var s3 = {
+        Name: "ABCD",
+        age: 21,
+        gender: "female",
+        roll_no: 34,
+        printStudentDetail: function () {
+            document.write("<br><br><u>Student3 details</u><br>")
+            document.write("<b>Name</b>: " + this.Name + "<br>", "<b>Age:</b> " + this.age + "<br>" + "<b>Gender:</b>" + this.gender + "<br>" + "<b>Roll no</b>: " + this.roll_no + "<br>")
+        }
+    };
+    s3.printStudentDetail()
+</script>
 
-<body align="center">
-    <h1 class="heading">
-        Creation of a student object and printing the details of the student in the JavaScript.
-    </h1>
-    <p><i>Error Check At Console</i></p>
-    <h3>Print<br> Student <br>Details</h3>
-    <table align="center">
-        <tr>
-            <th>Name of Student</th>
-            <th>Class of Student</th>
-            <th>Roll Number of Student</th>
-        </tr>
-        <tr>
-            <td id="printName"></td>
-            <td id="printClass"></td>
-            <td id="printRoll"></td>
-        </tr>
-    </table>
-    <p>Check your Roll Number here</p>
-    <input id="checkError" type="text" value="" style="border-radius:20px;outline:none" placeholder="Enter Roll No" />
-    <button type="submit" style="border-radius:20px;outline:none;background:red; color:white;"
-        onclick="return checkError()">Check</button>
+<body>
 </body>
-<script src="student.js"></script>
 
 </html>
